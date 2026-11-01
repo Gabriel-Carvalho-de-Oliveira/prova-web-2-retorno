@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Livros, oficinas e experiências no Ponto de Encontro.">
+    <title>Ponto de Encontro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="dados.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="cabecalho">
+      <p class="aviso">Loja de cultura, livros e experiências</p>
+      <div class="barra container">
+        <a class="marca" href="#inicio">Ponto de Encontro</a>
+        <nav aria-label="Navegação principal">
+          <a href="#catalogo">Catálogo</a>
+          <button id="tema" class="botao botao-secundario" type="button" aria-pressed="false">Tema escuro</button>
+          <button id="abrir-carrinho" class="botao botao-carrinho" type="button" aria-haspopup="dialog" aria-controls="carrinho">
+            Carrinho <span id="contador-carrinho">0</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="inicio" class="container">
+      <section class="destaque" aria-labelledby="titulo-principal">
+        <div class="destaque-texto">
+        <p class="sobretitulo">Em destaque</p>
+        <h1 id="titulo-principal">Boas ideias começam com um encontro.</h1>
+        <p>Encontre leituras, oficinas e experiências. Explore por categoria, descubra os detalhes e salve o que combina com você.</p>
+        <a class="botao botao-principal" href="#catalogo">Explorar novidades</a>
+        </div>
+        <figure class="destaque-imagem"><a href="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=85" target="_blank" rel="noopener noreferrer" aria-label="Abrir foto de livros"><img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=85" alt="Livros em uma estante de biblioteca" width="720" height="480"></a></figure>
+      </section>
+
+      <section id="catalogo" class="catalogo" aria-labelledby="titulo-catalogo">
+        <div class="cabecalho-secao">
+          <div>
+            <p class="sobretitulo">Escolha por onde começar</p>
+            <h2 id="titulo-catalogo">Novidades e experiências</h2>
+          </div>
+          <p id="contador-resultados" class="texto-suave" aria-live="polite"></p>
+        </div>
+        <div class="filtros">
+          <div class="campo">
+            <label for="busca">Buscar</label>
+            <input id="busca" type="search" placeholder="Nome ou descrição">
+          </div>
+          <div class="campo">
+            <label for="categoria">Categoria</label>
+            <select id="categoria"><option value="">Todas</option></select>
+          </div>
+          <div class="campo">
+            <label for="ordenacao">Ordenar por</label>
+            <select id="ordenacao">
+              <option value="recentes">Mais recentes</option>
+              <option value="menor-preco">Menor preço</option>
+              <option value="maior-preco">Maior preço</option>
+              <option value="avaliacao">Melhor avaliação</option>
+            </select>
+          </div>
+        </div>
+        <div id="produtos" class="grade-produtos"></div>
+        <p id="sem-resultados" class="sem-resultados" hidden>Nenhum item encontrado.</p>
+      </section>
+      <section class="newsletter" aria-labelledby="titulo-newsletter">
+        <div>
+          <p class="sobretitulo">Novidades do Ponto de Encontro</p>
+          <h2 id="titulo-newsletter">Fique por dentro</h2>
+          <p>Registre seu interesse nas novidades.</p>
+        </div>
+        <form id="form-newsletter">
+          <label for="email-newsletter">Seu e-mail *</label>
+          <input id="email-newsletter" name="email" type="email" autocomplete="email" required>
+          <label class="consentimento"><input name="consentimento" type="checkbox" required> Quero registrar meu interesse neste navegador. *</label>
+          <button class="botao botao-principal" type="submit">Registrar interesse</button>
+          <small>Seu interesse fica registrado neste navegador.</small>
+        </form>
+      </section>
+      <section class="contato" id="contato" aria-labelledby="titulo-contato">
+        <h2 id="titulo-contato">Entre em contato</h2>
+        <p>Conte o que você está procurando.</p>
+        <div class="contato-grade">
+          <form id="form-contato">
+            <div class="contato-campos">
+              <label>Seu nome *<input name="nome" autocomplete="name" required></label>
+              <label>E-mail *<input name="email" type="email" autocomplete="email" required></label>
+              <label class="contato-largo">Assunto *<select name="assunto"><option>Informações</option><option>Sugestão</option><option>Ajuda</option></select></label>
+              <label class="contato-largo">Mensagem *<textarea name="mensagem" rows="5" required></textarea></label>
+            </div>
+            <p>Uma mensagem de retorno será enviada o mais breve possível.</p>
+            <button class="botao botao-principal" type="submit">Registrar mensagem</button>
+          </form>
+          <aside class="contato-local"><h3>Local</h3><address>Rua das Ideias, 100 · São Paulo, SP</address><h3>Atendimento</h3><p>Segunda a sexta, das 9h às 18h</p></aside>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="carrinho" class="painel-carrinho" aria-labelledby="titulo-carrinho">
+      <header class="cabecalho-carrinho">
+        <h2 id="titulo-carrinho">Seu carrinho</h2>
+        <button id="fechar-carrinho" class="botao-fechar" type="button" aria-label="Fechar carrinho">×</button>
+      </header>
+      <p id="carrinho-vazio" class="texto-suave">Seu carrinho está vazio.</p>
+      <ul id="itens-carrinho" class="itens-carrinho"></ul>
+      <div class="resumo-carrinho">
+        <p><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></p>
+        <p><span>Entrega</span><strong id="entrega">R$ 0,00</strong></p>
+        <p class="total"><span>Total</span><strong id="total">R$ 0,00</strong></p>
+        <label class="campo campo-entrega" for="tipo-entrega">Receber como</label>
+        <select id="tipo-entrega">
+          <option value="retirada">Retirada</option>
+          <option value="delivery">Entrega</option>
+        </select>
+        <button id="finalizar" class="botao botao-principal" type="button">Finalizar pedido</button>
+      </div>
+    </dialog>
+
+    <p class="frase-final">Desenvolva sua cultura e, assim, desenvolva suas conexões.</p>
+    <footer class="rodape">
+      <div class="container rodape-conteudo">
+        <div><strong class="marca">Ponto de Encontro</strong><p>Prova: Gabriel Carvalho Oliveira - SP3201007</p></div>
+        <a href="#inicio">Voltar ao topo</a>
+      </div>
+    </footer>
+    <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
+  </body>
+</html>
